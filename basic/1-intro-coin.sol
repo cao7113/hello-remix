@@ -22,6 +22,7 @@ contract Coin {
     // Can only be called by the contract creator
     function mint(address receiver, uint amount) public {
         require(msg.sender == minter);
+        // bug here: maybe overflow
         balances[receiver] += amount;
     }
 
