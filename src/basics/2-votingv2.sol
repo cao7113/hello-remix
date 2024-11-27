@@ -3,10 +3,9 @@ pragma solidity >=0.7.0 <0.9.0;
 /// @title Voting with delegation.
 // Try Possible Improvements Possible Improvements 
 // https://docs.soliditylang.org/en/v0.8.28/solidity-by-example.html#possible-improvements
-// 1. Currently, many transactions are needed to assign the rights to vote to all participants. 
-// 2. Moreover, if two or more proposals have the same number of votes, winningProposal() is not able to register a tie.
+// Currently, many transactions are needed to assign the rights to vote to all participants. 
+// Moreover, if two or more proposals have the same number of votes, winningProposal() is not able to register a tie.
 // Can you think of a way to fix these issues?
-// 3. how to indicate end of voting
 
 contract BallotV2 {
     // This declares a new complex type which will
