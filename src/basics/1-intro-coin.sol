@@ -22,7 +22,7 @@ contract Coin {
     // Can only be called by the contract creator
     function mint(address receiver, uint amount) public {
         require(msg.sender == minter);
-        // bug: maybe overflow
+        // auto revert when overflow
         balances[receiver] += amount;
     }
 
@@ -36,7 +36,7 @@ contract Coin {
     function send(address receiver, uint amount) public {
         require(amount <= balances[msg.sender], InsufficientBalance(amount, balances[msg.sender]));
         balances[msg.sender] -= amount;
-        // bug: maybe overflow
+        // auto revert when overflow
         balances[receiver] += amount;
         emit Sent(msg.sender, receiver, amount);
     }
