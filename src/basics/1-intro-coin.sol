@@ -6,11 +6,11 @@ contract Coin {
     // The keyword "public" makes variables
     // accessible from other contracts
     address public minter;
-    mapping(address => uint) public balances;
+    mapping(address => uint256) public balances;
 
     // Events allow clients to react to specific
     // contract changes you declare
-    event Sent(address from, address to, uint amount);
+    event Sent(address from, address to, uint256 amount);
 
     // Constructor code is only run when the contract
     // is created
@@ -20,7 +20,7 @@ contract Coin {
 
     // Sends an amount of newly created coins to an address
     // Can only be called by the contract creator
-    function mint(address receiver, uint amount) public {
+    function mint(address receiver, uint256 amount) public {
         require(msg.sender == minter);
         // auto revert when overflow
         balances[receiver] += amount;
@@ -29,11 +29,11 @@ contract Coin {
     // Errors allow you to provide information about
     // why an operation failed. They are returned
     // to the caller of the function.
-    error InsufficientBalance(uint requested, uint available);
+    error InsufficientBalance(uint256 requested, uint256 available);
 
     // Sends an amount of existing coins
     // from any caller to an address
-    function send(address receiver, uint amount) public {
+    function send(address receiver, uint256 amount) public {
         require(amount <= balances[msg.sender], InsufficientBalance(amount, balances[msg.sender]));
         balances[msg.sender] -= amount;
         // auto revert when overflow
