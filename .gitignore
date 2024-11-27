@@ -1,4 +1,7 @@
-artifacts/
+## from online Remix IDE
 .states/
+artifacts/
+
+## from Foundry
 cache/
 out/
